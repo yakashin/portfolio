@@ -13,4 +13,5 @@
 - Улучшение сети;
 - Построение модели градиентного бустинга;
 - Выводы по проекту.
+
 Стэк: pandas, seaborn, pyplot, phik, sklearn, PyTorch, XGBoost, Optuna, Pipline.
