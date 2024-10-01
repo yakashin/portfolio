@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результат тестирования</title>
+</head>
+<body>
+    <h1>Результат:</h1>
+    <p>Предсказанный угол поворота: {{ angle }} градусов</p>
+    <img src="/src/{{ image_url }}" alt="Rotated Image" style="max-width: 500px;">
+
+    <form action="/testing" method="get">
+        <button type="submit">Назад</button>
+    </form>
+</body>
+</html>
