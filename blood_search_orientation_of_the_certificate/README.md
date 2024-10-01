@@ -91,9 +91,6 @@
 Завершён.
 
 ## Стэк:
-Python, Ultralytics, Motmetrics, OpenCV, PyTorch, Numpy, SciPy, time, timedelta, PIL, OS, Glob
-
-## Команда проекта
-- [Юрий Кашин](https://github.com/yakashin)
+Python, 
 
 
