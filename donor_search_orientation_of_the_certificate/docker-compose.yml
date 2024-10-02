@@ -1,9 +1,11 @@
 version: '2'
 services:
   blood_rotation:
-    image: blood_rotation:dev-slim
+    image: blood_rotation:dev
     container_name: model
     restart: on-failure
+    volumes:
+      - ./resources:/resources
     ports:
       - "8000:8000"
     command: python ./src/main.py

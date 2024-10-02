@@ -4,18 +4,18 @@ from PIL import Image
 from io import BytesIO
 import torch
 from PIL import ImageFile
-from torchvision import models, transforms
+from torchvision import models
 from torchvision.transforms import v2
 from datetime import datetime
 import torch.nn as nn
 
-from config import ResNetConfig
+from config import ModelConfig
 
 
-class ImageRotationPredictor:
+class ModelRotationPredictor:
     """
     Класс для предсказания угла поворота картинки.
-    Класс основан на дообученной на фотографиях справок доноров, в основе модели лежит модель ResNet34.
+    Класс основан на дообученной на фотографиях справок доноров, в основе модели лежит модель EfficientNet.
 
     def __init__: инициализация модели, подготовка изображения в удобный формат tensor.
     def load_image: загрузка изображения из сети или из локального хранилища
@@ -23,24 +23,22 @@ class ImageRotationPredictor:
     def predict_rotation: функция предсказания поворота изображения
     def process_image: функция для процесса предсказания поворота с выводом результата
     """
-    def __init__(self, model_path: str, device: str=ResNetConfig().device):
+    def __init__(self, model_path: str, device: str=ModelConfig().device):
         """
-        Инициализация модели ResNet34 для классификации поворота изображений и предобработка данных.
+        Инициализация модели EfficientNet для классификации поворота изображений и предобработка данных.
 
         :param model_path: Путь к файлу с обученными весами модели (формат .pth)
         :param device: Устройство для выполнения вычислений
 
         Описание:
-        - Загружает модель ResNet34 с предварительно обученными весами (IMAGENET1K_V1).
+        - Загружает модель EfficientNet с предварительно обученными весами и дообучением на исходных данных.
         - Заменяет последний полносвязный слой модели для предсказания четырёх классов (0, 90, 180, 270 градусов).
-        - Загружает веса обученной модели с помощью torch.load(), переводя их на устройство CPU.
         - Устанавливает модель в режим оценки (evaluation mode) для предотвращения обучения.
 
         Предобработка изображения включает:
-        - Изменение размера изображения до 256x256.
         - Обрезка изображения по центру до 224x224 пикселей.
         - Преобразование изображения в тензор.
-        - Нормализацию значений тензора с использованием стандартных средних и стандартных отклонений для предобученной модели (ImageNet).
+        - Нормализацию значений тензора с использованием стандартных средних и стандартных отклонений.
         """
         self.model = models.efficientnet_b0(weights='EfficientNet_B0_Weights.DEFAULT')
         self.model.classifier[1] = nn.Linear(self.model.classifier[1].in_features, 4)
@@ -58,7 +56,7 @@ class ImageRotationPredictor:
 
 
     @staticmethod
-    def load_image(image_path: str, type_input: str=ResNetConfig().default_type_input) ->  ImageFile.ImageFile|str:
+    def load_image(image_path: str, type_input: str=ModelConfig().default_type_input) ->  ImageFile.ImageFile|str:
         """
         Загружает изображение из локального пути или по URL и возвращает объект изображения (PIL.Image).
 
@@ -102,7 +100,7 @@ class ImageRotationPredictor:
             return f"Ошибка при загрузке изображения: {e}"
 
     @staticmethod
-    def rotate_and_save_image(image: ImageFile.ImageFile, angle: int, save_dir: str=ResNetConfig().save_dir) -> str:
+    def rotate_and_save_image(image: ImageFile.ImageFile, angle: int, save_dir: str=ModelConfig().save_dir) -> str:
         """
         Поворачивает изображение на указанный угол, сохраняет его в указанную папку с именем на основе текущей даты и времени.
 
@@ -142,7 +140,7 @@ class ImageRotationPredictor:
 
         return file_path
 
-    def predict_rotation(self, img: ImageFile.ImageFile, device: str=ResNetConfig().device) -> int:
+    def predict_rotation(self, img: ImageFile.ImageFile, device: str=ModelConfig().device) -> int:
         """
         Предсказание угла поворота изображения (0, 90, 180, 270 градусов) с помощью обученной модели.
 
@@ -174,7 +172,7 @@ class ImageRotationPredictor:
         angles = {0: 0, 1: 90, 2: 180, 3: 270}
         return angles[predicted_class]
 
-    def process_image(self, image_path: str, type_input: str=ResNetConfig().default_type_input) -> tuple:
+    def process_image(self, image_path: str, type_input: str=ModelConfig().default_type_input) -> tuple:
         """
         Обрабатывает изображение: загружает его, предсказывает угол поворота, поворачивает и сохраняет результат.
 
@@ -199,7 +197,7 @@ class ImageRotationPredictor:
         img = self.load_image(image_path=image_path, type_input=type_input)
 
         # 2. Предсказываем угол поворота
-        predicted_angle = self.predict_rotation(img, ResNetConfig().device)
+        predicted_angle = self.predict_rotation(img, ModelConfig().device)
 
         # 3. Поворачиваем изображение и сохраняем
         name_files = self.rotate_and_save_image(image=img, angle=predicted_angle)

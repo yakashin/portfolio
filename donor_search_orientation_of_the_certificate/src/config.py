@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 
 
-class ResNetConfig(BaseModel):
+class ModelConfig(BaseModel):
     """
-    Configuration for ResNetModel
+    Configuration for EfficientNet
     """
     models_path: str = "./resources/rotation_efnet_classifier.pth"
     save_dir: str = './src/results/'

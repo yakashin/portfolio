@@ -8,8 +8,8 @@ import shutil
 import os
 from pathlib import Path
 
-from config import ResNetConfig, AppConfig
-from model.model import ImageRotationPredictor
+from config import ModelConfig, AppConfig
+from model.model import ModelRotationPredictor
 
 warnings.filterwarnings('ignore')
 
@@ -34,13 +34,16 @@ def load_form(request: Request):
     """
     return templates.TemplateResponse("upload.html", {"request": request})
 
-@app.get("/info")
+@app.get("/")
 def send_info() -> dict:
     """
     Endpoint который возвращает информацию о сервисе
     :return: dict - информация о сервисе
     """
-    return {'message': 'Сервис по определению положения справки на фотографии и повороту, при необходимости.'}
+    return {'message': 'Сервис по определению положения справки на фотографии и повороту, при необходимости '
+                       'Для выполнения предсказания используйте endpoint /predict '
+                       'Для визуального тестирования перейдите в /testing '
+                       'Для получения информации о микросервисе перейдите в /docs'}
 
 
 @app.post("/predict")
@@ -65,7 +68,7 @@ def predict(image_paths: str, type_input: str) -> dict:
     result = predict("path/to/image.jpg", "local")
     """
 
-    rotation_predictor = ImageRotationPredictor(ResNetConfig().models_path, ResNetConfig().device)
+    rotation_predictor = ModelRotationPredictor(ModelConfig().models_path, ModelConfig().device)
     rotated_image = rotation_predictor.process_image(image_paths, type_input)
     return {'message': 'Success flipping', 'predictions angle': rotated_image[0], 'files_path': rotated_image[1]}
 
@@ -113,4 +116,4 @@ async def handle_upload(request: Request, file: UploadFile = File(...)):
     })
 
 if __name__ == "__main__":
-    uvicorn.run(app, host='127.0.0.1', port=AppConfig().port)
+    uvicorn.run(app, host=AppConfig().host, port=AppConfig().port)
