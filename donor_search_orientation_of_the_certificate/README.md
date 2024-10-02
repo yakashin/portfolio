@@ -36,13 +36,13 @@ DonorSearch
 - Количество классов классификатора - 4 (поворот на 0, 90, 180 или 270 градусов);
 - Инференс - на CPU.
 
-### **Инструкции по использованию:**
+## **Инструкции по использованию:**
 1. Необходимо склонировать репозиторий:
 
    ```bash
    git clone https://github.com/yakashin/portfolio/blood_search_orientation_of_the_certificate.git
-   cd blood_search_orientation_of_the_certificate
-```
+   cd blood_search_orientation_of_the_certificate 
+   ```
 
 2. Запустите проект с помощью Docker Compose:
 
