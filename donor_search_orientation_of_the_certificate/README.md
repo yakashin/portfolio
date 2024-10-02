@@ -62,6 +62,17 @@ docker-compose up --build
 
 Вы можете воспользоваться интерактивной документацией FastAPI (Swagger UI) по адресу: http://localhost:8000/docs
 
+Страницы приложения
+/testing — Страница для загрузки изображения и предсказания угла его поворота.
+/predict - Страница для отправления запроса с приложением ссылки на изображение и получение результата.
+
+5. Запуск из DockerHub:
+
+Выполнить запрос
+
+   ```bash
+docker pull yakashin/blood_rotation:latest
+```
 
 ### Метрика и условия:
 - Скорость обработки кадра должна быть не более 1000 мс. 
@@ -85,14 +96,16 @@ docker-compose up --build
 
 | #    | Наименование файла                | Описание   |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1.   | [README.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/README.md) | Представлена основная информация по проекту и его результатах   |
-| 2.   | [config.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/config.py) | Класс, в котором задаются константы и пути к файлам   |
-| 3.   | [init_model.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/init_model.py) | Класс, который инициализирует работу модели детекции и трекинга объектов и всех функций необходимых для визуализации их работы и расчета метрик   |
-| 4.   | [main.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/main.py) | Код запуска всех методов имеющихся в классах    |
-| 5.   | [requirements.txt](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/requirements.txt) | Список всех библиотек и их версии, необходимых для установки в виртуальной среде для запуска кода проекта   |
-| 6.   | [streamlit_yolo.py](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/streamlit_yolo.py) | Веб приложение в стримлит с моделью заказчика YOLA |
-| 7.   | [report.md](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/report.md) | Отчёт о проделанной работе |
-| 8.   | [Renue_group_5.ipynb](https://github.com/FedorSafonov/tracking-objects-on-a-conveyor-belt/blob/main/Renue_group_5.ipynb) | Тетрадка с ходом исследования |
+| 1.   | [README.md](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/README.md) | Представлена основная информация по проекту и его результатах   |
+| 2.   | [order_notebook.ipynb](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/order_notebook.ipynb) | Тетрадь Jupyter с ходом исследования |
+| 3.   | [requirements.txt](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/requirements.txt) | Список всех библиотек и их версии, необходимых для установки в виртуальной среде для запуска кода проекта   |
+| 6.   | [docker-compose.yml](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/docker-compose.yml) | Файл для настройки и управления несколькими сервисами через Docker Compose |
+| 7.   | [/resources](https://github.com/yakashin/portfolio/tree/main/donor_search_orientation_of_the_certificate/resources) | Папка с предобученной моделью |
+| 8.   | [/src/model/model.py](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/src/model/model.py) | Файл с реализацией модели для предсказания угла поворота |
+| 8.   | [/src/templates](https://github.com/yakashin/portfolio/tree/main/donor_search_orientation_of_the_certificate/src/templates) | Папка с html заготовками страниц |
+| 8.   | [/src/config.py](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/src/config.py) | Файл конфигурации модели и сервиса |
+| 8.   | [/src/main.py](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/src/main.py) |  Основной файл FastAPI-приложения |
+
 
 ## Итоги
 
