@@ -99,12 +99,12 @@ docker pull yakashin/blood_rotation:latest
 | 1.   | [README.md](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/README.md) | Представлена основная информация по проекту и его результатах   |
 | 2.   | [order_notebook.ipynb](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/order_notebook.ipynb) | Тетрадь Jupyter с ходом исследования |
 | 3.   | [requirements.txt](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/requirements.txt) | Список всех библиотек и их версии, необходимых для установки в виртуальной среде для запуска кода проекта   |
-| 6.   | [docker-compose.yml](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/docker-compose.yml) | Файл для настройки и управления несколькими сервисами через Docker Compose |
-| 7.   | [/resources](https://github.com/yakashin/portfolio/tree/main/donor_search_orientation_of_the_certificate/resources) | Папка с предобученной моделью |
-| 8.   | [/src/model/model.py](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/src/model/model.py) | Файл с реализацией модели для предсказания угла поворота |
-| 8.   | [/src/templates](https://github.com/yakashin/portfolio/tree/main/donor_search_orientation_of_the_certificate/src/templates) | Папка с html заготовками страниц |
+| 4.   | [docker-compose.yml](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/docker-compose.yml) | Файл для настройки и управления несколькими сервисами через Docker Compose |
+| 5.   | [/resources](https://github.com/yakashin/portfolio/tree/main/donor_search_orientation_of_the_certificate/resources) | Папка с предобученной моделью |
+| 6.   | [/src/model/model.py](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/src/model/model.py) | Файл с реализацией модели для предсказания угла поворота |
+| 7.   | [/src/templates](https://github.com/yakashin/portfolio/tree/main/donor_search_orientation_of_the_certificate/src/templates) | Папка с html заготовками страниц |
 | 8.   | [/src/config.py](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/src/config.py) | Файл конфигурации модели и сервиса |
-| 8.   | [/src/main.py](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/src/main.py) |  Основной файл FastAPI-приложения |
+| 9.   | [/src/main.py](https://github.com/yakashin/portfolio/blob/main/donor_search_orientation_of_the_certificate/src/main.py) |  Основной файл FastAPI-приложения |
 
 
 ## Итоги

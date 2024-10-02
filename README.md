@@ -4,6 +4,7 @@
 
 | Название проекта | Описание | Используемые библиотеки | 
 | :---------------------- | :---------------------- | :---------------------- |
+| [Определение ориентации медицинской справки на фотографии](donor_search_orientation_of_the_certificate) | Разработка модели компьютерного зрения для определения ориентации справки на фотографии с созданием микросервиса FastAPI и развертывание в docker| *python, pytorch, sklearn, FastAPI, uvicorn, docker* |
 | [Трекинг объектов на конвеерной ленте](tracking-objects-on-a-conveyor-belt-main) | Разработка модели потокового трекинга с получением координат центра объектов для каждого видеокадра с инференсом на Streamlit| *python, ultralytics, motmetrics, OpenCV, PyTorch, Numpy, streamlit* |
 | [Сопоставление товаров](similarity_search_faiss) | Сопоставление и поиск наиболее похожих товаров | *pandas, faiss, sklearn, XGBoost, Optuna, Pipline* |
 | [Прогнозирование стоимости авто](find-price-auto) | Прогнозирование стоимости авто на вторичном рынке | *pandas, seaborn, sklearn, XGBoost, CatBoost, LightGBM, Optuna, Pipline, ColumnTransform* |
